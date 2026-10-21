@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es-UY">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f6f8" />
+  <meta name="description" content="Una pequeña app privada para recordar cuándo confirmaste que cerraste la puerta." />
+  
+  
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{font-family:'DM Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#182228;background:#f5f6f8;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-width:320px}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.35}a{color:inherit}svg{display:block}.shell{width:min(1144px,calc(100% - 72px));margin:auto}.topbar{height:105px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5e9eb}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-family:Manrope,sans-serif;letter-spacing:-.045em;font-size:19px}.brand-icon{display:grid;place-items:center;width:37px;height:37px;border-radius:12px;background:#192b27;color:#fff}.brand-icon svg{width:24px}.brand-question{color:#5abb8f}.privacy-pill{font-size:12px;font-weight:700;color:#526861;display:flex;align-items:center;gap:8px;border:1px solid #e3e9e5;border-radius:99px;padding:9px 13px;background:#fff}.status-dot{width:7px;height:7px;background:#60b98c;border-radius:50%}.intro{padding:82px 0 57px;max-width:740px}.eyebrow,.overline{font-weight:800;letter-spacing:.14em;font-size:10px;color:#648678;margin:0 0 18px}.intro h1{font-family:Manrope,sans-serif;font-size:clamp(37px,5.2vw,61px);line-height:1.18;letter-spacing:-.065em;margin:0;font-weight:800}.intro h1 span{color:#7d8b8b}.intro-copy{font-size:16px;line-height:1.8;color:#718082;max-width:610px;margin:23px 0 0}.intro-copy strong{color:#40504e;font-weight:700}.main-grid{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(350px,.78fr);gap:20px;align-items:stretch}.panel{background:#fff;border:1px solid #ebedef;border-radius:24px;box-shadow:0 12px 35px #172a2510}.primary-panel{padding:35px}.panel-heading,.history-heading{display:flex;justify-content:space-between;align-items:start;gap:8px}.overline{margin-bottom:11px;font-size:10px;color:#8e9e9c}.panel h2{font-family:Manrope,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.045em;line-height:1.35;margin:0}.mini-label,.history-count{white-space:nowrap;border:1px solid #edf0ee;border-radius:99px;color:#6c8077;padding:8px 11px;font-size:11px;font-weight:800}.door-toolbar{margin-top:34px;margin-bottom:22px}.field-label{display:block;color:#637370;font-size:12px;font-weight:700;margin-bottom:10px}.select-wrap{position:relative}.select-wrap select{appearance:none;width:100%;padding:17px 42px 17px 16px;color:#25322e;background:#f6f8f7;border:1px solid #e6ebe8;border-radius:13px;font-weight:800;outline:none}.select-wrap select:focus-visible{outline:3px solid #b5ddc8}.select-wrap svg{position:absolute;right:15px;top:calc(50% - 10px);width:20px;pointer-events:none}.toolbar-actions{display:flex;justify-content:flex-end;align-items:center;gap:8px;padding-top:11px}.text-button{background:transparent;border:0;color:#74837f;font-size:12px;font-weight:700;text-decoration:underline;text-underline-offset:3px}.text-button:hover{color:#192b27}.action-separator{color:#bdc5c1}.status-card{min-height:258px;display:flex;align-items:center;flex-direction:column;text-align:center;justify-content:center;background:linear-gradient(160deg,#f9faf9,#f5f7f6);border:1px solid #eaf0eb;border-radius:18px;padding:28px 20px;transition:background .2s}.status-emblem{height:63px;width:63px;border-radius:50%;background:#e9eeec;color:#8a9994;display:grid;place-items:center;margin-bottom:19px}.status-emblem svg{width:32px;height:32px}.status-caption{font-size:10px;letter-spacing:.13em;color:#8a9994;font-weight:800;margin:0 0 11px}.status-title{font-family:Manrope,sans-serif;font-size:22px;font-weight:800;letter-spacing:-.05em;margin:0}.status-detail{font-size:12px;color:#778580;max-width:310px;line-height:1.7;margin:10px 0 0}.status-timestamp{font-size:11px;color:#3c8461;margin:12px 0 0;font-weight:700}.status-card.confirmed{background:linear-gradient(145deg,#effaf4,#f7fbf7);border-color:#d6efdd}.confirmed .status-emblem{background:#d4f1df;color:#19844f}.confirmed .status-caption{color:#4f9973}.confirmed .status-title{color:#1f6848}.confirm-button{display:flex;justify-content:center;align-items:center;gap:13px;width:100%;background:#1c4535;color:#fff;border:0;border-radius:14px;padding:20px 18px;font-size:15px;font-weight:800;margin-top:18px;box-shadow:0 6px 18px #10412e28;transition:background .18s,transform .18s}.confirm-button:hover{background:#266546;transform:translateY(-1px)}.confirm-button:active{transform:translateY(1px)}.confirm-button svg{width:21px;height:21px}.confirm-button.pulse{animation:pop .38s ease}@keyframes pop{50%{transform:scale(.982)}}.button-note{text-align:center;color:#99a49e;font-size:11px;line-height:1.7;margin:12px 0 26px}.manage-strip{border-top:1px solid #edf0ee;padding-top:25px;display:flex;align-items:center;gap:12px}.manage-mark{display:grid;place-items:center;background:#f0f4f1;height:38px;width:38px;border-radius:11px;font-size:24px;color:#688373;font-weight:400;flex-shrink:0}.manage-strip div{flex:1;min-width:0}.manage-strip strong{font-size:12px}.manage-strip p{margin:3px 0 0;font-size:11px;color:#9aa5a0}.secondary-button{border:1px solid #dce6df;border-radius:10px;background:#fff;color:#33654c;padding:10px 13px;font-size:12px;font-weight:800}.secondary-button:hover{background:#f1f8f4}.history-panel{padding:35px 30px;display:flex;flex-direction:column;min-width:0}.history-heading h2{font-size:24px}.history-filters{display:flex;gap:8px;margin:26px 0 23px}.filter-chip{padding:9px 15px;border-radius:99px;border:1px solid #e5ebe7;background:#fff;color:#8b9a93;font-size:12px;font-weight:700}.filter-chip.active{color:#236548;background:#e9f6ee;border-color:#e9f6ee}.history-list{padding:0;margin:0;list-style:none;min-height:275px;max-height:395px;overflow:auto;scrollbar-color:#d7e0da transparent}.history-item{display:flex;align-items:center;gap:12px;padding:18px 0;border-bottom:1px solid #f0f3f1}.history-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;color:#2f9d61;background:#edf9f1;font-weight:800;flex-shrink:0}.history-info{min-width:0;display:flex;flex-direction:column;gap:5px;flex:1}.history-info strong{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.history-date{font-size:11px;color:#94a39b}.history-item time{color:#61776a;font-size:11px;font-weight:800;white-space:nowrap}.empty-history{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:280px;color:#9ba8a1;gap:10px}.empty-history strong{color:#64786c;font-size:13px}.empty-history span:last-child{font-size:11px}.empty-symbol{display:grid;place-items:center;background:#f2f6f3;border-radius:50%;height:62px;width:62px;color:#a4b7aa;font-size:34px;font-weight:400}.history-more{font-size:11px;color:#8e9993;text-align:center;padding:18px}.history-footer{display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid #edf0ee;padding-top:20px;margin-top:auto}.history-footer p{font-size:10px;color:#a3ada8;margin:0}.danger-link{background:none;border:0;color:#a97977;font-size:11px;text-decoration:underline;font-weight:700;padding:0}.danger-link:hover{color:#b33b35}.about-strip{display:flex;align-items:center;gap:14px;margin:20px 0 64px;padding:22px 28px;background:#eff3f0;border-radius:17px;color:#40564b}.about-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#dfeae3;flex-shrink:0}.about-icon svg{width:22px}.about-strip strong{font-size:13px}.about-strip p{font-size:11px;margin:5px 0 0;line-height:1.65;color:#768b7d}footer{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #e7ece8;padding:27px 0 45px;font-size:11px;color:#96a29b}footer a{font-weight:800;text-decoration:none;color:#4b7861}footer a:hover{text-decoration:underline}dialog{border:none;padding:0;border-radius:22px;width:min(460px,calc(100% - 32px));box-shadow:0 24px 90px #192c2370}dialog::backdrop{background:#192820a1;backdrop-filter:blur(3px)}.dialog-content{padding:30px}.dialog-header{display:flex;align-items:start;justify-content:space-between;gap:14px;margin-bottom:24px}.dialog-header h2{font-size:23px;letter-spacing:-.06em;margin:0;font-family:Manrope,sans-serif}.icon-button{border:0;background:#f4f6f5;width:31px;height:31px;border-radius:8px;font-size:24px;color:#697d72}.dialog-content label{display:block;font-weight:800;font-size:12px;margin-bottom:8px}.dialog-content input{width:100%;border:1px solid #dce7df;background:#f8faf8;border-radius:11px;padding:15px;font-weight:700;outline:none}.dialog-content input:focus{border-color:#60a47d;box-shadow:0 0 0 3px #e1f3e8}.field-help{font-size:11px;color:#929f96;line-height:1.6}.form-error{font-size:12px;color:#b33b35}.dialog-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:25px}.dialog-cancel,.dialog-submit{padding:13px 16px;font-size:12px;font-weight:800;border-radius:10px}.dialog-cancel{background:white;color:#66776b;border:1px solid #dce4df}.dialog-submit{background:#1c4535;border:1px solid #1c4535;color:white}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}:focus-visible{outline:3px solid #76c49c;outline-offset:3px}
+@media(max-width:880px){.shell{width:min(720px,calc(100% - 36px))}.topbar{height:83px}.intro{padding:55px 0 42px}.main-grid{grid-template-columns:1fr}.history-panel{min-height:420px}.history-list{max-height:280px}}@media(max-width:490px){.shell{width:calc(100% - 30px)}.topbar{height:73px}.brand{font-size:16px;gap:9px}.brand-icon{width:32px;height:32px}.brand-icon svg{width:21px}.privacy-pill{font-size:10px;padding:7px 9px}.intro{padding:46px 3px 34px}.intro h1{font-size:36px;line-height:1.17}.intro-copy{font-size:13px;line-height:1.75;margin-top:18px}.panel{border-radius:19px}.primary-panel,.history-panel{padding:23px 20px}.panel h2{font-size:18px}.panel-heading .mini-label{padding:7px 9px;font-size:10px}.status-card{min-height:238px}.status-title{font-size:20px}.door-toolbar{margin-top:27px}.manage-strip{gap:10px}.manage-strip p{font-size:10px}.manage-strip strong{font-size:11px}.secondary-button{padding:10px}.history-heading h2{font-size:23px}.about-strip{align-items:flex-start;padding:18px;margin:16px 0 34px}footer{align-items:flex-start;flex-direction:column;gap:10px;padding:24px 0 34px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+</style>
+  <title>¿Cerré la puerta? — Registro de cierre</title>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="¿Cerré la puerta? — inicio">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 20V4l12-2v20L6 20Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m6 4 12 3" stroke="currentColor" stroke-width="1.7"/><circle cx="15" cy="13" r="1" fill="currentColor"/></svg>
+        </span>
+        <span>¿Cerré la puerta<span class="brand-question">?</span></span>
+      </a>
+      <span class="privacy-pill"><span class="status-dot"></span> Privado y local</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <p class="eyebrow">MENOS DUDAS. MÁS TRANQUILIDAD.</p>
+        <h1 id="intro-title">Salí de casa.<br /><span>Dejá la duda atrás.</span></h1>
+        <p class="intro-copy">Guardá el momento en el que <strong>vos confirmaste</strong> que cerraste una puerta. Después, consultalo cuando lo necesites.</p>
+      </section>
+
+      <div class="main-grid">
+        <section class="panel primary-panel" aria-labelledby="panel-title">
+          <div class="panel-heading">
+            <div>
+              <p class="overline">TU REGISTRO</p>
+              <h2 id="panel-title">Una cosa menos en qué pensar.</h2>
+            </div>
+            <span class="mini-label" id="door-count">1 puerta</span>
+          </div>
+
+          <div class="door-toolbar">
+            <label class="field-label" for="door-picker">Elegí la puerta</label>
+            <div class="select-wrap">
+              <select id="door-picker" aria-label="Elegir puerta"></select>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="toolbar-actions">
+              <button type="button" id="rename-door" class="text-button">Renombrar</button>
+              <span class="action-separator" aria-hidden="true">·</span>
+              <button type="button" id="delete-door" class="text-button">Eliminar</button>
+            </div>
+          </div>
+
+          <div class="status-card" id="status-card" aria-live="polite" aria-atomic="true">
+            <div class="status-emblem" id="status-emblem" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="6" y="13" width="20" height="15" rx="4" stroke="currentColor" stroke-width="2.2"/><path d="M11 13V9a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="20.5" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <p class="status-caption" id="status-caption">SIN CONFIRMACIÓN REGISTRADA</p>
+            <p class="status-title" id="status-title">Todavía no hay registro.</p>
+            <p class="status-detail" id="status-detail">Después de comprobar la puerta, tocá el botón para guardar la hora.</p>
+            <p class="status-timestamp" id="status-timestamp" hidden></p>
+          </div>
+
+          <button class="confirm-button" id="confirm-button" type="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <span>Confirmar que cerré</span>
+          </button>
+          <p class="button-note">Primero comprobá físicamente que esté cerrada. Esta app no usa sensores.</p>
+
+          <div class="manage-strip">
+            <span class="manage-mark" aria-hidden="true">+</span>
+            <div><strong>¿Tenés más de una puerta?</strong><p>Registralas por separado.</p></div>
+            <button id="add-door" type="button" class="secondary-button">Agregar <span aria-hidden="true">↗</span></button>
+          </div>
+        </section>
+
+        <aside class="panel history-panel" aria-labelledby="history-title">
+          <div class="history-heading">
+            <div><p class="overline">PARA MIRAR CUANDO QUIERAS</p><h2 id="history-title">Historial</h2></div>
+            <span class="history-count" id="history-count">0 registros</span>
+          </div>
+          <div class="history-filters" role="group" aria-label="Filtro de historial">
+            <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">Todas</button>
+            <button type="button" class="filter-chip" data-filter="selected" aria-pressed="false">Esta puerta</button>
+          </div>
+          <ol class="history-list" id="history-list" aria-live="polite"></ol>
+          <div class="history-footer">
+            <button type="button" id="clear-history" class="danger-link">Borrar historial</button>
+            <p>Se guarda solo en este dispositivo.</p>
+          </div>
+        </aside>
+      </div>
+
+      <section class="about-strip" aria-label="Información sobre la aplicación">
+        <div class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="11" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div><strong>Sin cuentas, sin rastreo, sin vueltas.</strong><p>Los datos se almacenan en este navegador. Si los borrás o cambiás de dispositivo, se pierde el historial.</p></div>
+      </section>
+    </main>
+
+    <footer><span>¿Cerré la puerta? — Código abierto, hecho para darte tranquilidad.</span><a href="https://github.com/MatisterUY/cerre-la-puerta" target="_blank" rel="noopener noreferrer">Ver en GitHub ↗</a></footer>
+  </div>
+
+  <dialog id="door-dialog" aria-labelledby="dialog-title">
+    <form id="door-form" method="dialog" class="dialog-content">
+      <div class="dialog-header"><div><p class="overline">PERSONALIZÁ TU ESPACIO</p><h2 id="dialog-title">Agregar una puerta</h2></div><button type="button" class="icon-button" id="close-dialog" aria-label="Cerrar">×</button></div>
+      <label for="door-name">Nombre de la puerta</label>
+      <input id="door-name" name="door-name" type="text" minlength="1" maxlength="48" autocomplete="off" required placeholder="Ej. Puerta de casa" />
+      <p class="field-help">Podés usar nombres como "Casa", "Garaje" o "Oficina".</p>
+      <p id="dialog-error" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button type="button" class="dialog-cancel" id="cancel-dialog">Cancelar</button><button type="submit" class="dialog-submit" id="save-door">Guardar puerta</button></div>
+    </form>
+  </dialog>
+  <div class="sr-only" id="announcement" role="status" aria-live="polite"></div>
+  <script type="module">
+const STORAGE_KEY = 'cerre-la-puerta:v1';
+const MAX_DOORS = 20;
+const MAX_EVENTS = 500;
+
+function initialState() {
+  return { version: 1, doors: [{ id: 'home', name: 'Puerta principal' }], selectedDoorId: 'home', events: [] };
+}
+
+function cleanName(name) {
+  return String(name ?? '').trim().replace(/\s+/g, ' ').slice(0, 48);
+}
+
+function normalizeState(value) {
+  if (!value || typeof value !== 'object' || !Array.isArray(value.doors) || !Array.isArray(value.events)) return initialState();
+  const unique = new Set();
+  const doors = value.doors.filter((door) => {
+    if (!door || typeof door.id !== 'string' || !door.id || unique.has(door.id) || !cleanName(door.name)) return false;
+    unique.add(door.id);
+    return true;
+  }).slice(0, MAX_DOORS).map((door) => ({ id: door.id, name: cleanName(door.name) }));
+  if (!doors.length) return initialState();
+  const events = value.events.filter((entry) =>
+    entry && typeof entry.id === 'string' && typeof entry.doorId === 'string' &&
+    typeof entry.timestamp === 'number' && Number.isFinite(entry.timestamp) &&
+    entry.timestamp > 0 && entry.timestamp < Date.now() + 86400000 &&
+    typeof entry.doorName === 'string'
+  ).slice(0, MAX_EVENTS).map((entry) => ({
+    id: entry.id, doorId: entry.doorId, doorName: cleanName(entry.doorName), timestamp: entry.timestamp
+  }));
+  return { version: 1, doors, selectedDoorId: doors.some((d) => d.id === value.selectedDoorId) ? value.selectedDoorId : doors[0].id, events };
+}
+
+function addDoor(state, name, id) {
+  const trimmed = cleanName(name);
+  if (!trimmed) throw new Error('Escribí un nombre para la puerta.');
+  if (state.doors.length >= MAX_DOORS) throw new Error('Podés registrar hasta 20 puertas.');
+  if (state.doors.some((d) => d.name.toLocaleLowerCase('es') === trimmed.toLocaleLowerCase('es'))) throw new Error('Ya tenés una puerta con ese nombre.');
+  if (!id || state.doors.some((d) => d.id === id)) throw new Error('No se pudo crear la puerta.');
+  return { ...state, doors: [...state.doors, { id, name: trimmed }], selectedDoorId: id };
+}
+
+function renameDoor(state, id, name) {
+  const trimmed = cleanName(name);
+  if (!trimmed) throw new Error('Escribí un nombre para la puerta.');
+  if (!state.doors.some((d) => d.id === id)) throw new Error('No existe esa puerta.');
+  if (state.doors.some((d) => d.id !== id && d.name.toLocaleLowerCase('es') === trimmed.toLocaleLowerCase('es'))) throw new Error('Ya tenés una puerta con ese nombre.');
+  return { ...state, doors: state.doors.map((door) => door.id === id ? { ...door, name: trimmed } : door) };
+}
+
+function removeDoor(state, id) {
+  if (state.doors.length <= 1) throw new Error('Debe quedar al menos una puerta.');
+  const doors = state.doors.filter((door) => door.id !== id);
+  if (doors.length === state.doors.length) throw new Error('No existe esa puerta.');
+  return { ...state, doors, selectedDoorId: state.selectedDoorId === id ? doors[0].id : state.selectedDoorId };
+}
+
+function confirmDoor(state, doorId, timestamp, id) {
+  const door = state.doors.find((d) => d.id === doorId);
+  if (!door) throw new Error('Elegí una puerta válida.');
+  if (!Number.isFinite(timestamp) || timestamp <= 0 || !id) throw new Error('No se pudo guardar el registro.');
+  const entry = { id, doorId, doorName: door.name, timestamp };
+  return { ...state, events: [entry, ...state.events].slice(0, MAX_EVENTS) };
+}
+
+function lastConfirmation(state, doorId) {
+  return state.events.find((entry) => entry.doorId === doorId) ?? null;
+}
+
+function clearHistory(state) {
+  return { ...state, events: [] };
+}
+
+
+const $ = (selector) => document.querySelector(selector);
+const dom = {
+  picker: $('#door-picker'), count: $('#door-count'), status: $('#status-card'), statusCaption: $('#status-caption'),
+  statusTitle: $('#status-title'), statusDetail: $('#status-detail'), statusTimestamp: $('#status-timestamp'),
+  confirm: $('#confirm-button'), add: $('#add-door'), rename: $('#rename-door'), remove: $('#delete-door'),
+  history: $('#history-list'), historyCount: $('#history-count'), clear: $('#clear-history'),
+  dialog: $('#door-dialog'), form: $('#door-form'), title: $('#dialog-title'), name: $('#door-name'),
+  error: $('#dialog-error'), save: $('#save-door'), announce: $('#announcement')
+};
+
+let state = load();
+let filter = 'all';
+let editingId = null;
+const dateFormatter = new Intl.DateTimeFormat('es-UY', { dateStyle: 'full', timeStyle: 'short' });
+const timeFormatter = new Intl.DateTimeFormat('es-UY', { hour: '2-digit', minute: '2-digit' });
+const dayFormatter = new Intl.DateTimeFormat('es-UY', { day: 'numeric', month: 'short', year: 'numeric' });
+
+function load() {
+  try { const stored = localStorage.getItem(STORAGE_KEY); return stored ? normalizeState(JSON.parse(stored)) : initialState(); }
+  catch { return initialState(); }
+}
+function persist() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); return true; }
+  catch { announce('No se pudo guardar en este navegador. Revisá el almacenamiento disponible.'); return false; }
+}
+function uid() { return globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`; }
+function announce(message) { dom.announce.textContent = ''; requestAnimationFrame(() => { dom.announce.textContent = message; }); }
+function update(next) { state = next; persist(); render(); }
+function activeDoor() { return state.doors.find((door) => door.id === state.selectedDoorId) ?? state.doors[0]; }
+function timeAgo(timestamp) {
+  const mins = Math.max(0, Math.floor((Date.now() - timestamp) / 60000));
+  if (mins < 1) return 'Hace un momento';
+  if (mins < 60) return `Hace ${mins} ${mins === 1 ? 'minuto' : 'minutos'}`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `Hace ${hrs} ${hrs === 1 ? 'hora' : 'horas'}`;
+  const days = Math.floor(hrs / 24);
+  return days === 1 ? 'Hace 1 día' : `Hace ${days} días`;
+}
+function renderPicker() {
+  dom.picker.replaceChildren();
+  for (const door of state.doors) {
+    const option = document.createElement('option'); option.value = door.id; option.textContent = door.name; dom.picker.append(option);
+  }
+  dom.picker.value = state.selectedDoorId;
+  dom.count.textContent = `${state.doors.length} ${state.doors.length === 1 ? 'puerta' : 'puertas'}`;
+  dom.remove.disabled = state.doors.length === 1;
+}
+function renderStatus() {
+  const door = activeDoor();
+  const latest = lastConfirmation(state, door.id);
+  dom.status.classList.toggle('confirmed', Boolean(latest));
+  dom.statusCaption.textContent = latest ? 'ÚLTIMA CONFIRMACIÓN REGISTRADA' : 'SIN CONFIRMACIÓN REGISTRADA';
+  dom.statusTitle.textContent = latest ? 'Sí, lo registraste.' : 'Todavía no hay registro.';
+  dom.statusDetail.textContent = latest ? `Confirmaste el cierre de “${door.name}”.` : 'Después de comprobar la puerta, tocá el botón para guardar la hora.';
+  dom.statusTimestamp.hidden = !latest;
+  if (latest) { dom.statusTimestamp.textContent = `${timeAgo(latest.timestamp)} · ${dateFormatter.format(new Date(latest.timestamp))}`; }
+}
+function historyItem(entry) {
+  const li = document.createElement('li'); li.className = 'history-item';
+  const icon = document.createElement('span'); icon.className = 'history-icon'; icon.setAttribute('aria-hidden', 'true'); icon.textContent = '✓';
+  const info = document.createElement('span'); info.className = 'history-info';
+  const name = document.createElement('strong'); name.textContent = entry.doorName;
+  const date = document.createElement('span'); date.className = 'history-date'; date.textContent = dayFormatter.format(new Date(entry.timestamp));
+  info.append(name, date);
+  const time = document.createElement('time'); time.dateTime = new Date(entry.timestamp).toISOString(); time.textContent = timeFormatter.format(new Date(entry.timestamp));
+  li.append(icon, info, time); return li;
+}
+function renderHistory() {
+  const entries = filter === 'selected' ? state.events.filter((entry) => entry.doorId === state.selectedDoorId) : state.events;
+  dom.historyCount.textContent = `${entries.length} ${entries.length === 1 ? 'registro' : 'registros'}`;
+  dom.history.replaceChildren();
+  if (!entries.length) {
+    const li = document.createElement('li'); li.className = 'empty-history';
+    li.innerHTML = '<span class="empty-symbol" aria-hidden="true">↺</span><strong>Todavía no hay movimientos</strong><span>Tus confirmaciones van a aparecer acá.</span>';
+    dom.history.append(li);
+  } else {
+    for (const entry of entries.slice(0, 50)) dom.history.append(historyItem(entry));
+    if (entries.length > 50) {
+      const li = document.createElement('li'); li.className = 'history-more'; li.textContent = `Mostrando los 50 registros más recientes de ${entries.length}.`; dom.history.append(li);
+    }
+  }
+  dom.clear.disabled = !state.events.length;
+  document.querySelectorAll('[data-filter]').forEach((button) => {
+    const selected = button.dataset.filter === filter;
+    button.classList.toggle('active', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
+}
+function render() { renderPicker(); renderStatus(); renderHistory(); }
+function openDoorDialog(id = null) {
+  editingId = id;
+  const door = state.doors.find((d) => d.id === id);
+  dom.title.textContent = id ? 'Renombrar puerta' : 'Agregar una puerta';
+  dom.save.textContent = id ? 'Guardar cambios' : 'Guardar puerta';
+  dom.name.value = door?.name ?? '';
+  dom.error.hidden = true;
+  dom.dialog.showModal();
+  dom.name.focus(); dom.name.select();
+}
+function handleError(error) { dom.error.textContent = error.message || 'Ocurrió un error.'; dom.error.hidden = false; }
+
+// Every confirmation is initiated by the user, after a physical check. No automatic lock inference.
+dom.confirm.addEventListener('click', () => {
+  const selected = activeDoor();
+  update(confirmDoor(state, selected.id, Date.now(), uid()));
+  dom.confirm.classList.remove('pulse'); void dom.confirm.offsetWidth; dom.confirm.classList.add('pulse');
+  announce(`Confirmación de ${selected.name} registrada. Recordá que esto no verifica el estado físico de la puerta.`);
+});
+dom.picker.addEventListener('change', (event) => {
+  state = { ...state, selectedDoorId: event.target.value }; persist(); render();
+});
+dom.add.addEventListener('click', () => openDoorDialog());
+dom.rename.addEventListener('click', () => openDoorDialog(activeDoor().id));
+dom.remove.addEventListener('click', () => {
+  const door = activeDoor();
+  if (!window.confirm(`¿Eliminar “${door.name}”? El historial anterior se conservará.`)) return;
+  try { update(removeDoor(state, door.id)); announce('Puerta eliminada.'); } catch (error) { announce(error.message); }
+});
+dom.form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  try {
+    if (editingId) update(renameDoor(state, editingId, dom.name.value));
+    else update(addDoor(state, dom.name.value, uid()));
+    dom.dialog.close(); announce(editingId ? 'Nombre actualizado.' : 'Puerta agregada.');
+  } catch (error) { handleError(error); }
+});
+$('#close-dialog').addEventListener('click', () => dom.dialog.close());
+$('#cancel-dialog').addEventListener('click', () => dom.dialog.close());
+dom.dialog.addEventListener('click', (event) => { if (event.target === dom.dialog) dom.dialog.close(); });
+dom.clear.addEventListener('click', () => {
+  if (!state.events.length) return;
+  if (window.confirm('¿Borrar todo el historial de confirmaciones? Esta acción no se puede deshacer.')) {
+    update(clearHistory(state)); announce('Historial borrado.');
+  }
+});
+document.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => { filter = button.dataset.filter; renderHistory(); }));
+
+render();
+setInterval(renderStatus, 60_000);
+
+</script>
+</body>
+</html>

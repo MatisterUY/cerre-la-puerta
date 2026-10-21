@@ -1,0 +1,13 @@
+{
+  "name": "cerre-la-puerta",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "description": "Privacy-first door confirmation log, built as a dependency-free progressive web app.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "start": "node scripts/serve.js"
+  },
+  "engines": {"node": ">=18"}
+}
